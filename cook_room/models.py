@@ -9,6 +9,7 @@ class Dish(models.Model):
     ]
     name = models.CharField('Name',max_length=200)
     description = models.CharField('Description',max_length=200)
+    small_description = models.CharField('Small description',max_length=100,blank=True)
     price = models.IntegerField(verbose_name='Price')
     dish_type = models.CharField('Type',choices=type,max_length=200)
     img = models.ImageField(verbose_name='Image',upload_to='dishs/')
