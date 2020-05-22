@@ -170,30 +170,12 @@
    </div>
    <div class="container-wrap">
      <div class="row no-gutters d-flex">
-     {% for pizza in pizza_meals_left %}
-      <div class="col-lg-4 d-flex ftco-animate">
-         <div class="services-wrap d-flex">
-           <a href="#" class="img" style="background-image: url({{ pizza.img.url }});"></a>
-           <div class="text p-4">
-             <h3>{{ pizza.name}}</h3>
-             <p>{{ pizza.description }} </p>
-             <p class="price"><span>${{ pizza.price }}</span> <a href="#" class="ml-2 btn btn-white btn-outline-white">Order</a></p>
-           </div>
-         </div>
-       </div>
+     {% for dish in pizza_meals_left %}
+      {% include 'block/meals_left.html'%}
        {% endfor %}
 
-       {% for pizza in pizza_meals_right %}
-       <div class="col-lg-4 d-flex ftco-animate">
-          <div class="services-wrap d-flex">
-            <a href="#" class="img order-lg-last" style="background-image: url({{ pizza.img.url }});"></a>
-            <div class="text p-4">
-              <h3>{{ pizza.name}}</h3>
-              <p>{{ pizza.description }} </p>
-              <p class="price"><span>${{ pizza.price }}</span> <a href="#" class="ml-2 btn btn-white btn-outline-white">Order</a></p>
-            </div>
-          </div>
-        </div>
+       {% for dish in pizza_meals_right %}
+       {% include 'block/meals_right.html' %}
        {% endfor %}
 
 
@@ -209,38 +191,16 @@
      <div class="row">
 
        <div class="col-md-6">
-         {% for pizza in pizza_price_left %}
-         <div class="pricing-entry d-flex ftco-animate">
-           <div class="img" style="background-image: url({{ pizza.img.url }});"></div>
-           <div class="desc pl-3">
-             <div class="d-flex text align-items-center">
-               <h3><span>{{ pizza.name }}</span></h3>
-               <span class="price">{{ pizza.price }}</span>
-             </div>
-             <div class="d-block">
-               <p>{{ pizza.small_description }}</p>
-             </div>
-           </div>
-         </div>
+         {% for dish in pizza_price_left %}
+         {% include 'block/pricing.html'%}
          {% endfor %}
         </div>
 
 
 
        <div class="col-md-6">
-         {% for pizza in pizza_price_right %}
-         <div class="pricing-entry d-flex ftco-animate">
-           <div class="img" style="background-image: url({{ pizza.img.url }});"></div>
-           <div class="desc pl-3">
-             <div class="d-flex text align-items-center">
-               <h3><span>{{ pizza.name}}</span></h3>
-               <span class="price">{{ pizza.price }}</span>
-             </div>
-             <div class="d-block">
-               <p>{{ pizza.small_description }}</p>
-             </div>
-           </div>
-         </div>
+         {% for dish in pizza_price_right %}
+         {% include 'block/pricing.html' %}
          {% endfor %}
        </div>
      </div>

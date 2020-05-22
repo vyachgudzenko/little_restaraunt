@@ -31,7 +31,24 @@ def index(request):
     return render(request,'index.html',context)
 
 def menu(request):
-    return render(request,'menu.html')
+    pizzas = Dish.objects.filter(dish_type='pizza')
+    pizza_meals_left = pizzas[:3]
+    pizza_meals_right = pizzas[3:6]
+    half_pizza_price = ceil(len(pizzas)/2)
+    pizza_price_left = pizzas[:half_pizza_price]
+    pizza_price_right = pizzas[half_pizza_price:]
+    burgers = Dish.objects.filter(dish_type='burger')[:3]
+    drinks = Dish.objects.filter(dish_type='drink')[:3]
+    pastas = Dish.objects.filter(dish_type='pasta')[:3]
+    context = { 'pizzas':pizzas,
+               'pizza_meals_left':pizza_meals_left,
+               'pizza_meals_right':pizza_meals_right,
+               'pizza_price_left':pizza_price_left,
+               'pizza_price_right':pizza_price_right,
+               'drinks':drinks,
+               'burgers':burgers,
+               'pastas':pastas}
+    return render(request,'menu.html',context)
 
 def about(request):
     return render(request,'about.html')
