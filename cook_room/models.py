@@ -15,3 +15,18 @@ class Dish(models.Model):
     img = models.ImageField(verbose_name='Image',upload_to='dishs/')
     def __str__(self):
         return self.name
+
+class Chef(models.Model):
+    chef_type = [
+        ('Chef','Chef'),
+        ('Su Chef','Su Chef'),
+        ('Pizza Maker','Pizza Maker'),
+        ('Confectioner','Confectioner'),
+    ]
+    name = models.CharField('Name',max_length=200)
+    type = models.CharField('Type',max_length=200,choices=chef_type)
+    description = models.CharField('Description',max_length=200)
+    img = models.ImageField(verbose_name='Image',upload_to='chefs/')
+    status = models.BooleanField(verbose_name='Status')
+    def __str__(self):
+        return self.name

@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 
 from .forms import ContactForm
 from .models import Contact
-from cook_room.models import Dish
+from cook_room.models import Dish,Chef
 
 from math import ceil
 
@@ -51,7 +51,9 @@ def menu(request):
     return render(request,'menu.html',context)
 
 def about(request):
-    return render(request,'about.html')
+    chefs = Chef.objects.filter(status=True)
+    context = {'chefs':chefs}
+    return render(request,'about.html',context)
 
 def contact(request):
     if request.method != 'POST':
