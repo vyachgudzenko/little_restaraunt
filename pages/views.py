@@ -8,13 +8,17 @@ from cook_room.models import Dish,Chef
 
 from math import ceil
 
+def split_list(item_list):
+    separator = ceil(len(item_list)/2)
+    first_half = item_list[:separator]
+    second_half = item_list[separator:]
+    return first_half,second_half
+
 def index(request):
     pizzas = Dish.objects.filter(dish_type='pizza')
     pizza_meals_left = pizzas[:3]
     pizza_meals_right = pizzas[3:6]
-    half_pizza_price = ceil(len(pizzas)/2)
-    pizza_price_left = pizzas[:half_pizza_price]
-    pizza_price_right = pizzas[half_pizza_price:]
+    pizza_price_left, pizza_price_right = split_list(pizzas)
     pizza_tab = pizzas[:3]
     drinks = Dish.objects.filter(dish_type='drink')[:3]
     burgers = Dish.objects.filter(dish_type='burger')[:3]
