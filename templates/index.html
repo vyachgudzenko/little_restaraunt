@@ -13,7 +13,7 @@
           <span class="subheading">Delicious</span>
           <h1 class="mb-4">Italian Cuizine</h1>
           <p class="mb-4 mb-md-5">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-          <p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
+          <p><a href="{% url 'pages:contact' %}" class="btn btn-primary p-3 px-xl-4 py-xl-3">Contact Us</a> <a href="{% url 'pages:menu' %}" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
         </div>
         <div class="col-md-6 ftco-animate">
           <img src="{% static 'images/sl_1.png'%}" class="img-fluid" alt="">
@@ -31,7 +31,7 @@
           <span class="subheading">Crunchy</span>
           <h1 class="mb-4">Italian Pizza</h1>
           <p class="mb-4 mb-md-5">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-          <p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
+          <p><a href="{% url 'pages:contact' %}" class="btn btn-primary p-3 px-xl-4 py-xl-3">Contact Us</a> <a href="{% url 'pages:menu' %}" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
         </div>
         <div class="col-md-6 ftco-animate">
           <img src="{% static 'images/sl_2.png'%}" class="img-fluid" alt="">
@@ -50,7 +50,7 @@
           <span class="subheading">Welcome</span>
           <h1 class="mb-4">We cooked your desired Pizza Recipe</h1>
           <p class="mb-4 mb-md-5">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-          <p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
+          <p><a href="{% url 'pages:contact' %}" class="btn btn-primary p-3 px-xl-4 py-xl-3">Contact Us</a> <a href="{% url 'pages:menu' %}" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
         </div>
 
       </div>
@@ -235,72 +235,32 @@
 
                <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
                  <div class="row">
-                   {% for pizza in pizza_tab %}
-                   <div class="col-md-4 text-center">
-                     <div class="menu-wrap">
-                       <a href="#" class="menu-img img mb-4" style="background-image: url({{ pizza.img.url }});"></a>
-                       <div class="text">
-                         <h3><a href="#">{{ pizza.name }}</a></h3>
-                         <p>{{ pizza.small_description }}</p>
-                         <p class="price"><span>{{ pizza.price }}</span></p>
-                         <p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
-                       </div>
-                     </div>
-                   </div>
+                   {% for dish in pizza_tab %}
+                   {% include 'block/tab_block.html'%}
                    {% endfor %}
                   </div>
                 </div>
 
                <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
                  <div class="row">
-                   {% for drink in drinks %}
-                   <div class="col-md-4 text-center">
-                     <div class="menu-wrap">
-                       <a href="#" class="menu-img img mb-4" style="background-image: url({{ drink.img.url }});"></a>
-                       <div class="text">
-                         <h3><a href="#">{{ drink.name}}</a></h3>
-                         <p>{{ drink.small_description }}</p>
-                         <p class="price"><span>{{ drink.price }}</span></p>
-                         <p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
-                       </div>
-                     </div>
-                   </div>
+                   {% for dish in drinks %}
+                   {% include 'block/tab_block.html'%}
                    {% endfor %}
                  </div>
                </div>
 
                <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
                  <div class="row">
-                   {% for burger in burgers%}
-                   <div class="col-md-4 text-center">
-                     <div class="menu-wrap">
-                       <a href="#" class="menu-img img mb-4" style="background-image: url({{ burger.img.url }});"></a>
-                       <div class="text">
-                         <h3><a href="#">{{ burger.name }}</a></h3>
-                         <p>{{ burger.small_description }}</p>
-                         <p class="price"><span>{{ burger.price }}</span></p>
-                         <p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
-                       </div>
-                     </div>
-                   </div>
+                   {% for dish in burgers%}
+                   {% include 'block/tab_block.html'%}
                    {% endfor %}
                  </div>
                </div>
 
                <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">
                  <div class="row">
-                   {% for pasta in pastas %}
-                   <div class="col-md-4 text-center">
-                     <div class="menu-wrap">
-                       <a href="#" class="menu-img img mb-4" style="background-image: url({{ pasta.img.url }});"></a>
-                       <div class="text">
-                         <h3><a href="#">{{ pasta.name }}</a></h3>
-                         <p>{{ pasta.small_description }}</p>
-                         <p class="price"><span>{{ pasta.price }}</span></p>
-                         <p><a href="#" class="btn btn-white btn-outline-white">Add to cart</a></p>
-                       </div>
-                     </div>
-                   </div>
+                   {% for dish in pastas %}
+                   {% include 'block/tab_block.html'%}
                    {% endfor %}
                  </div>
                </div>

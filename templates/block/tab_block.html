@@ -1,0 +1,11 @@
+<div class="col-md-4 text-center">
+  <div class="menu-wrap">
+    <a href="#" class="menu-img img mb-4" style="background-image: url({{ dish.img.url }});"></a>
+    <div class="text">
+      <h3><a href="#">{{ dish.name }}</a></h3>
+      <p>{{ dish.small_description }}</p>
+      <p class="price"><span>${{ dish.price }}</span></p>
+      <p><a href="{% url 'pages:contact'%}" class="btn btn-white btn-outline-white">Order</a></p>
+    </div>
+  </div>
+</div>

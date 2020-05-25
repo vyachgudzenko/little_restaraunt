@@ -37,10 +37,8 @@ def index(request):
 def menu(request):
     pizzas = Dish.objects.filter(dish_type='pizza')
     pizza_meals_left = pizzas[:3]
-    pizza_meals_right = pizzas[3:6]
-    half_pizza_price = ceil(len(pizzas)/2)
-    pizza_price_left = pizzas[:half_pizza_price]
-    pizza_price_right = pizzas[half_pizza_price:]
+    pizza_meals_right = pizzas[3:6]    
+    pizza_price_left, pizza_price_right = split_list(pizzas)
     burgers = Dish.objects.filter(dish_type='burger')[:3]
     drinks = Dish.objects.filter(dish_type='drink')[:3]
     pastas = Dish.objects.filter(dish_type='pasta')[:3]

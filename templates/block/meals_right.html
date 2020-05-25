@@ -4,7 +4,7 @@
      <div class="text p-4">
        <h3>{{ dish.name}}</h3>
        <p>{{ dish.description }} </p>
-       <p class="price"><span>${{ dish.price }}</span> <a href="#" class="ml-2 btn btn-white btn-outline-white">Order</a></p>
+       <p class="price"><span>${{ dish.price }}</span> <a href="{% url 'pages:contact'%}" class="ml-2 btn btn-white btn-outline-white">Order</a></p>
      </div>
    </div>
  </div>
