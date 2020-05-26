@@ -13,6 +13,7 @@ class Dish(models.Model):
     price = models.IntegerField(verbose_name='Price')
     dish_type = models.CharField('Type',choices=type,max_length=200)
     img = models.ImageField(verbose_name='Image',upload_to='dishs/')
+    to_main_page = models.BooleanField(verbose_name='To Main Page',blank=True)
     def __str__(self):
         return self.name
 
