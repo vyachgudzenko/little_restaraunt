@@ -8,6 +8,7 @@ from cook_room.models import Dish,Chef
 
 from math import ceil
 
+
 def split_list(item_list):
     separator = ceil(len(item_list)/2)
     first_half = item_list[:separator]
@@ -15,14 +16,14 @@ def split_list(item_list):
     return first_half,second_half
 
 def index(request):
-    pizzas = Dish.objects.filter(dish_type='pizza')
+    pizzas = Dish.objects.filter(dish_type='pizza',to_main_page=True)
     pizza_meals_left = pizzas[:3]
     pizza_meals_right = pizzas[3:6]
-    pizza_price_left, pizza_price_right = split_list(pizzas)
+    pizza_price_left, pizza_price_right = split_list(Dish.objects.filter(dish_type='pizza'))
     pizza_tab = pizzas[:3]
-    drinks = Dish.objects.filter(dish_type='drink')[:3]
-    burgers = Dish.objects.filter(dish_type='burger')[:3]
-    pastas = Dish.objects.filter(dish_type='pasta')[:3]
+    drinks = Dish.objects.filter(dish_type='drink',to_main_page=True)[:3]
+    burgers = Dish.objects.filter(dish_type='burger',to_main_page=True)[:3]
+    pastas = Dish.objects.filter(dish_type='pasta',to_main_page=True)[:3]
     context = {'pizzas':pizzas,
                'pizza_meals_left':pizza_meals_left,
                'pizza_meals_right':pizza_meals_right,
@@ -35,13 +36,13 @@ def index(request):
     return render(request,'index.html',context)
 
 def menu(request):
-    pizzas = Dish.objects.filter(dish_type='pizza')
+    pizzas = Dish.objects.filter(dish_type='pizza',to_main_page=True)
     pizza_meals_left = pizzas[:3]
     pizza_meals_right = pizzas[3:6]
-    pizza_price_left, pizza_price_right = split_list(pizzas)
-    burgers = Dish.objects.filter(dish_type='burger')[:3]
-    drinks = Dish.objects.filter(dish_type='drink')[:3]
-    pastas = Dish.objects.filter(dish_type='pasta')[:3]
+    pizza_price_left, pizza_price_right = split_list(Dish.objects.filter(dish_type='pizza'))
+    burgers = Dish.objects.filter(dish_type='burger',to_main_page=True)[:3]
+    drinks = Dish.objects.filter(dish_type='drink',to_main_page=True)[:3]
+    pastas = Dish.objects.filter(dish_type='pasta',to_main_page=True)[:3]
     context = { 'pizzas':pizzas,
                'pizza_meals_left':pizza_meals_left,
                'pizza_meals_right':pizza_meals_right,
